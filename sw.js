@@ -1,5 +1,5 @@
-const CACHE='m-chem-v3-theme-1';
-const FILES=['./','./index.html','./style.css','./app.js','./questions.js','./icon.svg','./icon-192.png','./icon-512.png','./manifest.webmanifest'];
+const CACHE='m-chem-v4-mastery-1';
+const FILES=['./','./index.html','./style.css','./app.js','./questions.js','./icon.svg?v=4','./icon-192.png?v=4','./icon-512.png?v=4','./manifest.webmanifest'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(f=>new Request(f,{cache:'reload'})))).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>(k.startsWith('chem-pocket-')||k.startsWith('m-chem-'))&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('message',e=>{if(e.data?.type==='CACHE_STATUS')e.waitUntil(caches.open(CACHE).then(async c=>{const entries=await Promise.all(FILES.map(f=>c.match(new URL(f,self.registration.scope).href)));e.ports[0]?.postMessage({ok:entries.every(Boolean)})}))});
