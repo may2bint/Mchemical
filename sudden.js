@@ -86,7 +86,7 @@ window.SD = (() => {
   }
   function finish(s){
     clearInterval(timer);locked=false;current=s;const q=s.lastQuestion;
-    shell(`<div class="result"><p>${s.reason==='complete'?'全問正解':s.reason==='timeout'?'時間切れ':s.reason==='unknown'?'わからない':'不正解'}</p><div class="score">${s.score}<span>問</span></div></div>${q&&s.reason!=='complete'?`<details class="questionDetails" open><summary>${html(q.statement)}</summary><div class="listAnswer"><strong>解答 ${q.answer?'〇':'✖'}</strong><p>${html(q.explanation)}</p><div class="source">${html(q.displaySource.replace(/\s*改題/g,''))}</div></div></details>`:''}<p class="note">今日の挑戦は終了しました。</p>${s.published?'<p>記録を登録しました。</p>':`<form id="sdPublish"><label for="sdNickname">ランキングの名前</label><input id="sdNickname" name="nickname" type="text" maxlength="16" autocomplete="off" required value="${html(s.nickname||'')}" ${s.nickname?'readonly':''}><p class="note">${s.nickname?'このアカウントの登録名です。':'1〜16文字。登録後は変更できません。'}</p><button class="primary below" type="submit" id="sdPublishButton">この名前で記録を登録</button><p class="note">登録した名前と最高記録がランキングに公開されます。</p></form>`}<button class="secondary listLink" id="sdBoard">ランキング</button>`);
+    shell(`<div class="result"><p>${s.reason==='complete'?'全問正解':s.reason==='timeout'?'時間切れ':s.reason==='unknown'?'わからない':'不正解'}</p><div class="score">${s.score}<span>問</span></div>${s.isPersonalBest===true?'<p role="status"><strong>自己ベスト更新！</strong></p>':''}</div>${q&&s.reason!=='complete'?`<details class="questionDetails" open><summary>${html(q.statement)}</summary><div class="listAnswer"><strong>解答 ${q.answer?'〇':'✖'}</strong><p>${html(q.explanation)}</p><div class="source">${html(q.displaySource.replace(/\s*改題/g,''))}</div></div></details>`:''}<p class="note">今日の挑戦は終了しました。</p>${s.published?'<p>記録を登録しました。</p>':`<form id="sdPublish"><label for="sdNickname">ランキングの名前</label><input id="sdNickname" name="nickname" type="text" maxlength="16" autocomplete="off" required value="${html(s.nickname||'')}" ${s.nickname?'readonly':''}><p class="note">${s.nickname?'このアカウントの登録名です。':'1〜16文字。登録後は変更できません。'}</p><button class="primary below" type="submit" id="sdPublishButton">この名前で記録を登録</button><p class="note">登録した名前と最高記録がランキングに公開されます。</p></form>`}<button class="secondary listLink" id="sdBoard">ランキング</button>`);
     el('sdBoard').onclick=board;
     if(el('sdPublish'))el('sdPublish').onsubmit=async e=>{
       e.preventDefault();const token=view;el('sdPublishButton').disabled=true;
@@ -97,7 +97,7 @@ window.SD = (() => {
   async function board(){
     clearInterval(timer);const token=++view;shell('<h3>ランキング</h3><p>読み込み中…</p>');
     try{const rows=await rpc('sd_leaderboard');if(token!==view)return;
-      shell(`<h3>ランキング</h3><p class="note">各アカウントの最高記録</p>${rows.length?`<ol class="sdRanking">${rows.map(row=>`<li><span class="sdPlace">${row.rank}</span><span>${html(row.nickname)}</span><strong>${row.score}<small> 問</small></strong></li>`).join('')}</ol>`:'<p>まだ記録がありません。</p>'}`);
+      shell(`<h3>ランキング</h3>${rows.length?`<ol class="sdRanking">${rows.map(row=>`<li><span class="sdPlace">${row.rank}</span><span>${html(row.nickname)}</span><strong>${row.score}<small> 問</small></strong></li>`).join('')}</ol>`:'<p>まだ記録がありません。</p>'}`);
     }catch(e){if(token===view){shell('<h3>ランキング</h3><button class="secondary listLink" id="sdRetryBoard">再読み込み</button>');el('sdRetryBoard').onclick=board;error(e);}}
   }
   async function boot(){
