@@ -59,3 +59,12 @@ header,hr,.source{border-color:var(--line)}
 .progress,.sdTimer,.toast{border-radius:0}
 .statement{margin:24px 0 30px}
 @media(max-width:600px){.panel{padding:0;border-radius:0}.question{padding:12px 0 18px;border-radius:0}.suddenHome{padding-top:22px}.feedback,.feedback.wrong{padding:20px 0}.year{padding:14px 0}}
+
+.multiFilter{min-width:0;border:0;padding:0;margin:0}
+.multiFilter legend{font-size:12px;color:var(--muted);margin-bottom:8px}
+.filterChoices{display:flex;flex-wrap:wrap;column-gap:18px;row-gap:0}
+.filterChoices label{display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;color:var(--text);cursor:pointer}
+.filterChoices input{width:18px;height:18px;margin:0;accent-color:var(--accent);flex-shrink:0}
+.filterChoices label:has(input:checked){color:var(--accent)}
+.filterChoices input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.filters{grid-template-columns:1fr;gap:18px;margin-bottom:24px}.filterChoices{column-gap:20px}}
