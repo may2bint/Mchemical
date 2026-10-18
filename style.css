@@ -36,3 +36,26 @@ header,hr,.source{border-color:var(--line)}
 .rankMark{display:inline-flex;width:24px;height:24px;vertical-align:middle;flex-shrink:0;color:inherit}.rankMark svg{display:block;width:100%;height:100%}.mastery{display:flex;color:var(--accent)}.rankFilters .rankMark{width:23px;height:23px}.rankPicker{display:flex;gap:3px}.gradeButton{display:grid;place-items:center;width:36px;height:40px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--muted);padding:5px}.gradeButton[aria-pressed="true"]{background:var(--control);border-color:var(--accent);color:var(--accent)}.gradeButton .rankMark{width:22px;height:22px}.crown{display:inline-block;font-size:28px;line-height:1;vertical-align:middle;margin-left:6px}.count{display:flex;align-items:center;gap:4px}.questionDetails{border:0;padding:16px 0}.questionDetails summary{font-size:16px;line-height:1.9;color:var(--text);cursor:pointer}.questionDetails summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.listAnswer{background:var(--control);border-radius:12px;padding:16px;margin-top:12px}.listAnswer p{margin:8px 0 0;font-size:14px}.rankChange{display:flex;gap:9px;align-items:center;color:var(--accent)}.changeArrow{font-size:17px;color:var(--muted)}.resultLabel{color:var(--muted);font-size:13px}.result{padding:20px 0}.listItem .source{padding-top:12px}.listItem{padding:20px 0}@media(max-width:380px){.gradeButton{width:32px}.rankPicker{gap:1px}.rankFilters .rankMark{width:20px;height:20px}}
 
 .suddenHome{margin-top:24px}.suddenPanel .question{padding:20px 0;border:0;box-shadow:none}.sdTimer{height:9px;border-radius:8px;background:var(--line,#ddd);overflow:hidden;margin:12px 0 24px}.sdTimer>div{height:100%;width:100%;background:#25836a;transition:width .08s linear}.sdTimer>div.urgent{background:#cd6540}.sdMessage{min-height:1.5em;color:var(--muted,#777)}.sdRules{font-weight:600;line-height:1.8}.sdName{font-weight:700}.sdRanking{list-style:none;padding:0}.sdRanking li{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;border-bottom:1px solid var(--line,#ddd);padding:16px 0;overflow-wrap:anywhere}.sdRanking strong{white-space:nowrap}.sdPlace{color:var(--muted,#777)}#sdNickname{display:block;width:100%;box-sizing:border-box;padding:14px;margin-top:10px;font:inherit;border:1px solid var(--line,#ddd);border-radius:10px;color:inherit;background:transparent}#sdNickname:read-only{opacity:.7}.suddenPanel .note{line-height:1.8}.suddenPanel .countRow h2{font-size:22px}.suddenPanel .countRow{gap:12px}.suddenPanel .countRow button{flex-shrink:0}
+
+/* Flat study layout */
+.panel,.question{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0}
+.question{padding:12px 0 20px}
+.suddenHome{border-top:1px solid var(--line);margin-top:32px;padding-top:24px}
+.primary,.secondary,.answer,select,#sdNickname{border-radius:3px}
+.secondary.listLink{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;text-align:left;margin-top:0;padding:18px 0;color:var(--text)}
+.resume{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;text-align:left;padding:15px 0}
+.pill,:root[data-theme="dark"] .pill{background:transparent;border-radius:0;color:var(--muted);padding:0;font-size:12px}
+.feedback,.feedback.wrong,:root[data-theme="dark"] .feedback,:root[data-theme="dark"] .feedback.wrong{background:transparent;border-radius:0;border-top:1px solid var(--line);padding:22px 0}
+.feedback h2{color:var(--accent)}
+.feedback.wrong h2{color:#94553c}
+:root[data-theme="dark"] .feedback.wrong h2{color:#f1bdb0}
+.year,.themeOption{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:15px 0}
+.themeOption:has(input:checked){border-color:var(--line);box-shadow:none;color:var(--accent)}
+.yearGrid{column-gap:22px;row-gap:0}
+.rankFilters label{background:transparent;border:0;border-bottom:2px solid var(--line);border-radius:0}
+.rankFilters label:has(input:checked){border-color:var(--accent)}
+.gradeButton{border-radius:2px}
+.listAnswer{background:transparent;border-radius:0;border-left:2px solid var(--line);padding:8px 0 8px 16px}
+.progress,.sdTimer,.toast{border-radius:0}
+.statement{margin:24px 0 30px}
+@media(max-width:600px){.panel{padding:0;border-radius:0}.question{padding:12px 0 18px;border-radius:0}.suddenHome{padding-top:22px}.feedback,.feedback.wrong{padding:20px 0}.year{padding:14px 0}}
